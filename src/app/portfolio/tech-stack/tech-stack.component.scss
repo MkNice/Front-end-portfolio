@@ -1,0 +1,55 @@
+@use "abstracts/variables" as *;
+
+.tech-stack {
+  padding: 8rem 2rem;
+  background: $primary-bg;
+  color: $text-color;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    color: $text-color;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+  }
+
+  .card {
+    background: $secondary-bg;
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: background $transition-time ease,
+      transform $transition-time ease;
+
+    &:hover {
+      background: &secondary-bg-hover;
+      transform: translateY(-0.5rem);
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      height: 5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: $text-color;
+    }
+  }
+}

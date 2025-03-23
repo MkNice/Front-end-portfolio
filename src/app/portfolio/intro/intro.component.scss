@@ -58,7 +58,7 @@
     .description {
       font-size: 1.4rem;
       line-height: 1.6;
-      color: $hover-color;
+      color: $text-color;
     }
 
     .btn {
@@ -75,7 +75,7 @@
         transform $transition-time ease;
 
       &:hover {
-        background: $hover-color;
+        background: $hover-color;;
         transform: translateY(-2px);
       }
     }

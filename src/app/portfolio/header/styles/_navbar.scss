@@ -18,13 +18,13 @@
 
     .link {
       text-decoration: none;
-      color: $hover-color;
+      color: $text-color;
       font-size: 1.6rem;
       @include transition();
 
       &:hover {
-        color: $text-color;
-        border-bottom: 0.2rem solid $text-color;
+        color: $hover-color;;
+        border-bottom: 0.2rem solid $hover-color;;
       }
     }
   }
