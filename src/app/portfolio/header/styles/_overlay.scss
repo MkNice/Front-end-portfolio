@@ -1,15 +1,23 @@
+@use "abstracts/variables" as *;
+
 .overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  transition: opacity 0.3s ease;
-  opacity: 0;
-  pointer-events: none;
-
-
+  display: none;
 }
-.navbar:has(#menu-toggle:checked) .overlay {
-  opacity: 1;
-  visibility: visible;
+
+@media (max-width: $tablet) {
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .navbar:has(#menu-toggle:checked) .overlay {
+    opacity: 1;
+    visibility: visible;
+  }
 }
