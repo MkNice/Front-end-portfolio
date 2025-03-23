@@ -6,76 +6,13 @@
       applications.
     </p>
     <div class="grid">
+      @for (skill of techStack; track $index) {
       <div class="card">
-        <img src="/assets/images/icons/html5.svg" alt="HTML5" />
-        <h3>HTML5</h3>
-        <p>The foundation of modern web development.</p>
+        <img [src]="path + skill.icon" [alt]="skill.title" />
+        <h3>{{ skill.title }}</h3>
+        <p>{{ skill.desc }}</p>
       </div>
-      <div class="card">
-        <img src="/assets/images/icons/scss.svg" alt="SCSS" />
-        <h3>SCSS</h3>
-        <p>Advanced styling with Sass and SCSS.</p>
-      </div>
-      <div class="card">
-        <img src="/assets/images/icons/typescript.svg" alt="TypeScript" />
-        <h3>TypeScript</h3>
-        <p>Enhancing JavaScript with strong typing and scalability.</p>
-      </div>
-      <div class="card">
-        <img src="/assets/images/icons/angular.svg" alt="Angular" />
-        <h3>Angular</h3>
-        <p>Building scalable and dynamic frontend applications.</p>
-      </div>
-
-      <div class="card">
-        <img src="/assets/images/icons/rxjs.svg" alt="RxJS" />
-        <h3>RxJS</h3>
-        <p>Reactive programming and event-driven architecture.</p>
-      </div>
-      <div class="card">
-        <img src="/assets/images/icons/ngrx.svg" alt="State managers" />
-        <h3>State Managers</h3>
-        <p>
-          Efficient state handling for scalable Angular applications, including
-          NgRx, NgXs.
-        </p>
-      </div>
-      <div class="card">
-        <img src="/assets/images/icons/primeng.svg" alt="UI Libraries" />
-        <h3>UI Libraries</h3>
-        <p>
-          Pre-built UI components for fast development. Angular Material,
-          PrimeNG, Angular CDK.
-        </p>
-      </div>
-      <div class="card">
-        <img src="/assets/images/icons/nodejs.svg" alt="Node.js" />
-        <h3>Node.js</h3>
-        <p>Creating robust backend solutions with Express and APIs.</p>
-      </div>
-      <div class="card">
-        <img src="/assets/images/icons/firebase.svg" alt="Firebase" />
-        <h3>Firebase</h3>
-        <p>Authentication, database, and hosting services.</p>
-      </div>
-      <div class="card">
-        <img src="/assets/images/icons/docker.svg" alt="Docker" />
-        <h3>Docker</h3>
-        <p>Containerization for scalable applications.</p>
-      </div>
-      <div class="card">
-        <img src="/assets/images/icons/git.svg" alt="Git" />
-        <h3>Git</h3>
-        <p>Version control for efficient collaboration.</p>
-      </div>
-      <div class="card">
-        <img
-          src="/assets/images/icons/performance.svg"
-          alt="Performance Optimization"
-        />
-        <h3>Performance Optimization</h3>
-        <p>Techniques to enhance speed and efficiency.</p>
-      </div>
+      }
     </div>
   </div>
 </section>
