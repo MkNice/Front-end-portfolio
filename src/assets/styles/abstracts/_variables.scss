@@ -2,11 +2,13 @@ $mobile: 480px;
 $tablet: 768px;
 $desktop: 1024px;
 
+
+$transition-time: 0.3s;
+$menu-width: calc(20vw + 10rem);
+$wrapper-width: 75vw;
+
 $primary-bg: #1d1c21;
 $secondary-bg: #616161;
 $text-color: #fff;
 $hover-color: #ccc;
 $border-color: #fff;
-$transition-time: 0.3s;
-$menu-width: 30rem;
-$wrapper-width: 75vw;
