@@ -7,7 +7,7 @@
     </p>
     <div class="grid">
       @for (skill of techStack; track $index) {
-      <div class="card">
+      <div class="card" appScrollReveal>
         <img [src]="path + skill.icon" [alt]="skill.title" />
         <h3>{{ skill.title }}</h3>
         <p>{{ skill.desc }}</p>

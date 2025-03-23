@@ -2,7 +2,7 @@
 
 .intro {
   margin-top: calc(5vh + 2rem);
-  min-height: 50vh;
+  min-height: 100vh;
   background: url("/assets/images/desktop-header.jpg") no-repeat center/cover;
   padding: 4rem 2rem;
   display: flex;
@@ -36,27 +36,27 @@
     max-width: 60rem;
 
     h1 {
-      font-size: 5rem;
+      font-size: 7rem;
       font-weight: bold;
       color: $text-color;
       margin-bottom: 1rem;
     }
 
     p {
-      font-size: 2rem;
+      font-size: 4rem;
       margin-bottom: 2rem;
       color: $text-color;
     }
 
     h2 {
-      font-size: 2.5rem;
+      font-size: 4.5rem;
       margin-top: 3rem;
       margin-bottom: 1rem;
       color: $text-color;
     }
 
     .description {
-      font-size: 1.4rem;
+      font-size: 2.4rem;
       line-height: 1.6;
       color: $text-color;
     }
@@ -67,7 +67,7 @@
       padding: 1rem 2rem;
       background: $border-color;
       color: $primary-bg;
-      font-size: 1.4rem;
+      font-size: 2.4rem;
       font-weight: 500;
       border-radius: 0.6rem;
       text-decoration: none;
@@ -75,13 +75,12 @@
         transform $transition-time ease;
 
       &:hover {
-        background: $hover-color;;
+        background: $hover-color;
         transform: translateY(-2px);
       }
     }
   }
 
-  // Адаптив
   @media (max-width: $tablet) {
     padding: 3rem 1.5rem;
 
@@ -124,4 +123,40 @@
       }
     }
   }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-25rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.intro .content > * {
+  opacity: 0;
+  transform: translateX(-5rem);
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+.intro .content > *:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.intro .content > *:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.intro .content > *:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.intro .content > *:nth-child(4) {
+  animation-delay: 2s;
+}
+.intro .content > *:nth-child(5) {
+  animation-delay: 2.5s;
 }

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-tech-stack',
-  imports: [],
+  imports: [ScrollRevealDirective],
   templateUrl: './tech-stack.component.html',
   styleUrl: './tech-stack.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -38,12 +39,12 @@ export class TechStackComponent {
     {
       icon: 'ngrx.svg',
       title: 'State Managers',
-      desc: 'Efficient state handling for scalable Angular applications, including NgRx, NgXs.',
+      desc: 'Efficient state handling for scalable Angular applications.',
     },
     {
       icon: 'primeng.svg',
       title: 'UI Libraries',
-      desc: 'Pre-built UI components for fast development. Angular Material, PrimeNG, Angular CDK.',
+      desc: 'Pre-built UI components for fast development like PrimeNG.',
     },
     {
       icon: 'nodejs.svg',
