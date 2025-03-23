@@ -1,0 +1,17 @@
+@use 'variables' as *;
+
+@mixin flex-center($justify: space-between) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin transition($property: all, $time: $transition-time) {
+  transition: $property $time ease;
+}
+
+@mixin button-reset {
+  border: none;
+  background: none;
+  cursor: pointer;
+}

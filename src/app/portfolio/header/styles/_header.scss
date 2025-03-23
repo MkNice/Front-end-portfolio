@@ -1,0 +1,14 @@
+@use 'abstracts/variables' as *;
+
+@use "./navbar" as *;
+@use "./hamburger" as *;
+@use "./overlay" as *;
+
+header {
+  position: fixed;
+  width: 100%;
+  min-height: 5vh;
+  background-color: $primary-bg;
+  padding: 2rem 0;
+  top: 0;
+}
