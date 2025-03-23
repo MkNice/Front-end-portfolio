@@ -1,6 +1,1 @@
-@use '../public/styles/variables' as *;
-
-.wrapper {
-  max-width: $wrapper-width;
-  margin: 0 auto;
-}
+@use 'assets/styles/index';

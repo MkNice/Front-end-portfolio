@@ -18,6 +18,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/assets/styles"]
+            },
             "outputPath": "dist/front-end",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -30,11 +33,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "./public/styles/reset.scss",
-              "./public/styles/variables.scss",
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": [],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -93,11 +92,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "public/styles/reset.scss",
-              "public/styles/variables.scss",
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }
