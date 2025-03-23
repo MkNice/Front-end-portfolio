@@ -1,0 +1,70 @@
+@use "../../../../../public/styles/variables" as *;
+@use "../../../../../public/styles/mixins" as *;
+
+.navbar {
+  @include flex-center();
+  max-width: $wrapper-width;
+
+  .logo {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+
+    .link {
+      text-decoration: none;
+      color: $hover-color;
+      font-size: 1.6rem;
+      @include transition();
+
+      &:hover {
+        color: $text-color;
+        border-bottom: 0.2rem solid $text-color;
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .navbar {
+    .nav-links {
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: calc(5vh + 4rem);
+      left: -100%;
+      visibility: hidden;
+      width: $menu-width;
+      height: 100vh;
+      padding: 3rem 0;
+      background-color: #0E0E10;
+      box-shadow: 0.2rem 0.6rem 0.6rem $border-color;
+      transition: left 0.7s ease;
+      border-right: 0.1rem solid $border-color;
+      margin: 0;
+      border-radius: 0.5rem;
+      @include transition();
+      li {
+        padding: 1.5rem 2.4rem;
+        border-bottom-right-radius: 2rem;
+        box-shadow: 0.2rem 0.6rem 0.6rem rgba(0, 0, 0, 0.3);
+      }
+      a {
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+    &:has(#menu-toggle:checked) .nav-links {
+      left: 0;
+      visibility: visible;
+    }
+  }
+}

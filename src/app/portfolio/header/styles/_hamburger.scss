@@ -1,0 +1,65 @@
+@use "../../../../../public/styles/variables" as *;
+@use "../../../../../public/styles/mixins" as *;
+
+.hamburger-menu {
+  display: block;
+  width: 2.6rem;
+  height: 2.6rem;
+  @include transition();
+}
+
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle:checked ~ .menu-btn > span {
+  transform: rotate(45deg);
+}
+
+#menu-toggle:checked ~ .menu-btn > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+
+#menu-toggle:checked ~ .menu-btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+@media (max-width: $tablet) {
+  .hamburger-menu {
+    position: relative;
+  }
+
+  .menu-btn {
+    @include flex-center();
+    position: fixed;
+    top: 1.7rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    cursor: pointer;
+    z-index: 2;
+    padding-top: 1.5rem;
+    & > span,
+    & > span::before,
+    & > span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 0.2rem;
+      background-color: $secondary-bg;
+      @include transition();
+      z-index: 2;
+    }
+
+    & > span::before {
+      content: "";
+      top: -0.8rem;
+    }
+
+    & > span::after {
+      content: "";
+      top: 0.8rem;
+    }
+  }
+}
