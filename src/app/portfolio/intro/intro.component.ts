@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { GlowDirective } from './directives/glow.directive';
 
 @Component({
   selector: 'app-intro',
-  imports: [],
+  standalone: true,
+  imports: [GlowDirective],
   templateUrl: './intro.component.html',
   styleUrl: './intro.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IntroComponent {
-
-}
+export class IntroComponent { }

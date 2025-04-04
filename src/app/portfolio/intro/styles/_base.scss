@@ -1,7 +1,7 @@
 @use "abstracts/variables" as *;
 
 .intro {
-  margin-top: calc(5vh + 2rem);
+  margin-top: 5vh;
   min-height: 100vh;
   background: url("/assets/images/desktop-header.jpg") no-repeat center/cover;
   padding: 4rem 2rem;

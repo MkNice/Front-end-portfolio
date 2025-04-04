@@ -11,6 +11,41 @@
   }
 }
 
+@keyframes glow {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
+  }
+  30% {
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.5),
+      0 0 25px rgba(255, 255, 255, 0.4);
+  }
+  60% {
+    text-shadow: 0 0 150px rgba(255, 255, 255, 0.9),
+      1px 1px 200px rgba(255, 255, 255, 1), 0 0 100px rgba(255, 255, 255, 0.9);
+  }
+
+  80% {
+    text-shadow: 1px 1px 150px rgba(255, 255, 255, 0.8),
+      2px 2px 100px rgba(255, 255, 255, 0.7),
+      3px 3px 50px rgba(255, 255, 255, 0.6);
+  }
+  90% {
+    text-shadow: 3px 3px 25px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.8);
+  }
+}
+
+.glowing-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  will-change: text-shadow, transform, opacity;
+  animation: slideInLeft 0.6s ease forwards;
+}
+
 .intro .content > * {
   opacity: 0;
   transform: translateX(-5rem);
