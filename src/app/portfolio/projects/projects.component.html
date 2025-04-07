@@ -1,0 +1,44 @@
+<section class="projects">
+  <div class="wrapper">
+    <h2>Projects</h2>
+    <p class="description">
+      Take a look at some of my featured projects. Each preview gives a quick
+      glance at what I’ve built — click on any project to explore it in more
+      detail and see it in action.
+    </p>
+    <div class="carousel">
+      <button class="arrow" (click)="prevSlide()">←</button>
+      <div class="carousel-viewport">
+        <div
+          class="carousel-track"
+          [style.transform]="'translateX(-' + activeSlide * 102 + '%)'"
+        >
+          <!-- 102% to account for the width of the slides and spacing -->
+
+          @for (project of projects;track project.title) {
+          <div class="carousel-slide">
+            <div class="card">
+              <div class="preview-image">
+                <img [src]="project.image" alt="Preview" />
+              </div>
+              <h2>{{ project.title }}</h2>
+              <p>{{ project.description }}</p>
+              <button>Go started</button>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      <button class="arrow" (click)="nextSlide()">→</button>
+    </div>
+    <div class="carousel-indicator">
+      @for (index of dots; track $index) {
+      <button
+        class="dot"
+        [class.active]="$index === activeSlide"
+        (click)="goToSlide($index)"
+      ></button>
+      }
+    </div>
+  </div>
+</section>
