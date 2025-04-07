@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-projects',
@@ -8,7 +8,8 @@ import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angu
   styleUrl: './projects.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
+  public activeSlide = 0;
   public projects = [
     {
       title: "Developer Resources",
@@ -33,32 +34,55 @@ export class ProjectsComponent {
       description:
         "Access a wealth of resources to support your development journey with Enigma Code-ai.",
       image: "./assets/images/projectsPreview/project-for-example.png",
-    }
+    },
+    {
+      title: "Developer Resources5",
+      description:
+        "Access a wealth of resources to support your development journey with Enigma Code-ai.",
+      image: "./assets/images/projectsPreview/project-for-example.png",
+    },
+    {
+      title: "Developer Resources6",
+      description:
+        "Access a wealth of resources to support your development journey with Enigma Code-ai.",
+      image: "./assets/images/projectsPreview/project-for-example.png",
+    }, {
+      title: "Developer Resources7",
+      description:
+        "Access a wealth of resources to support your development journey with Enigma Code-ai.",
+      image: "./assets/images/projectsPreview/project-for-example.png",
+    },
+    {
+      title: "Developer Resources8",
+      description:
+        "Access a wealth of resources to support your development journey with Enigma Code-ai.",
+      image: "./assets/images/projectsPreview/project-for-example.png",
+    },
   ];
-  @ViewChild('carouselTrack', { static: true }) trackRef!: ElementRef;
-  activeSlide = 0;
-public dots = Array.from({ length: Math.floor(this.projects.length / 2) }, (_, i) => i);
-  goToSlide(index: number) {
+  public dots = Array.from({ length: Math.floor(this.projects.length / 2) }, (_, i) => i);
+
+  public slideTransform: string = '';
+
+  public ngOnInit(): void {
+    this.updateSlideTransform();
+  }
+
+  private updateSlideTransform(): void {
+    const offset = this.activeSlide * -101.7;
+    this.slideTransform = `translateX(${offset}%)`;
+  }
+
+  public goToSlide(index: number): void {
     this.activeSlide = index;
   }
-  nextSlide() {
-    if (this.activeSlide < Math.floor(this.projects.length / 2) - 1) {
-      this.activeSlide++;
-    }
-  }
-  
-  prevSlide() {
-    if (this.activeSlide > 0) {
-      this.activeSlide--;
-    }
-  }
-  
-  scroll(direction: 'left' | 'right') {
-    const el = this.trackRef.nativeElement as HTMLElement;
-    const scrollAmount = 360;
 
-    direction === 'left'
-      ? el.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
-      : el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  public changeSlide(direction: 'next' | 'prev'): void {
+    const halfLength = Math.floor(this.projects.length / 2) - 1;
+    if (direction === 'next') {
+      this.activeSlide = this.activeSlide < halfLength ? this.activeSlide + 1 : 0;
+      return;
+    }
+    this.activeSlide = this.activeSlide > 0 ? this.activeSlide - 1 : halfLength;
   }
+
 }
