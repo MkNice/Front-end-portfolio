@@ -1,128 +1,14 @@
 @use "abstracts/variables" as *;
-
-.carousel {
-  position: relative;
-  width: 100%;
-
-  .carousel-container {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-
-    .carousel-viewport {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.5s ease;
-      gap: 1.3vw;
-      padding-top: 20px;
-    }
-
-    .carousel-slide {
-      flex: 0 0 100%;
-    }
-    @media (min-width: 768px) {
-      .carousel-slide {
-        flex: 0 0 49%;
-      }
-    }
-
-    @media (min-width: 1441px) {
-      .carousel-slide {
-        flex: 0 0 32%;
-      }
-    }
-    .arrow {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      padding: 0.3rem 1rem 0.6rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: background 0.2s ease;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.3);
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-        text-shadow: 0 0 5px rgba(255, 255, 255, 1);
-      }
-
-      &:first-of-type {
-        left: 1rem;
-      }
-
-      &:last-of-type {
-        right: 1rem;
-      }
-    }
-  }
-
-  .carousel-indicator {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-    gap: 0.5rem;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #444;
-    transition: background 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-
-    &.active {
-      background: #8888ff;
-      transform: scale(1.2);
-      box-shadow: 0 0 5px #8888ff;
-    }
-  }
-}
+@use "abstracts/mixins" as *;
 
 .projects {
   display: block;
   background: #0f0f11;
   position: relative;
-  color: #fff;
+  color: $text-color;
   text-align: center;
   padding: 8rem 0;
-
-  &::after,
-  &::before {
-    content: "";
-    position: absolute;
-    width: 50rem;
-    height: 50rem;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  &::after {
-    top: 0;
-    left: 0;
-    background: radial-gradient(
-      circle at top left,
-      rgba(71, 40, 107, 0.6),
-      transparent 60%
-    );
-  }
-
-  &::before {
-    bottom: 0;
-    right: 0;
-    background: radial-gradient(
-      circle at bottom right,
-      rgba(71, 40, 107, 0.6),
-      transparent 60%
-    );
-  }
+  @include corner-glow();
 
   h2 {
     font-size: 3.5rem;
@@ -194,7 +80,7 @@
     }
 
     button {
-      background-color: #ffffff;
+      background-color: #fff;
       color: #0f172a;
       padding: 0.625rem 1.25rem;
       border: none;

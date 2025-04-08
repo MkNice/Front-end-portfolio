@@ -1,0 +1,84 @@
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
+
+:host {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    position: relative;
+    @include flex-center(space-between);
+    gap: 0.5rem;
+
+    .viewport {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .track {
+      display: flex;
+      gap: 1.3vw;
+      padding-top: 20px;
+      @include transition(transform);
+    }
+
+    .slide {
+      flex: 0 0 100%;
+
+      @include respond-min($tablet) {
+        flex: 0 0 49%;
+      }
+
+      @include respond-min(1441px) {
+        flex: 0 0 32%;
+      }
+    }
+
+    .arrow {
+      background: rgba(255, 255, 255, 0.1);
+      color: $text-color;
+      font-size: 2rem;
+      padding: 0.3rem 1rem 0.6rem;
+      border-radius: $radius-md;
+      @include transition(background);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 1);
+      }
+
+      &:first-of-type {
+        left: 1rem;
+      }
+
+      &:last-of-type {
+        right: 1rem;
+      }
+    }
+  }
+
+  .indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #444;
+    cursor: pointer;
+    @include transition(background, 0.3s);
+
+    &.active {
+      background: #8888ff;
+      transform: scale(1.2);
+      box-shadow: 0 0 5px #8888ff;
+    }
+  }
+}
