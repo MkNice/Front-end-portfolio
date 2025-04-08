@@ -76,11 +76,24 @@ export class ProjectsComponent implements OnInit {
       this.setupMediaListeners();
       this.updateDots();
       this.updateSlideTransform();
+      window.addEventListener('resize', this.resizeHandler);
     }
   }
 
+  private resizeHandler = () => {
+    this.activeSlide = 0;
+    this.updateDots();
+    this.updateSlideTransform();
+    this.cdr.detectChanges();
+  };
+
   ngOnDestroy(): void {
+    if (isPlatformBrowser(this.platformId)) {
+
+      window.removeEventListener('resize', this.resizeHandler);
+    }
     this.mediaQueryListeners.forEach(dispose => dispose());
+
   }
 
   private setupMediaListeners(): void {
@@ -115,22 +128,21 @@ export class ProjectsComponent implements OnInit {
     if (width >= 768) return 2;
     return 1;
   }
+
   private updateSlideTransform(): void {
-    const offset = this.activeSlide * - 100;
-    const totalGap = (this.activeSlide) * 1.3;
+    const track = document.querySelector('.carousel-track') as HTMLElement;
+    const slide = track?.querySelector('.carousel-slide') as HTMLElement;
 
-    if (this.activeSlide === 0) {
-      this.slideTransform = 'translateX(0)';
-      return;
-    }
+    if (!slide || !track) return;
 
+    const visibleCards = this.getVisibleCardsCount();
+    const slideRect = slide.getBoundingClientRect();
+    const slideWidth = slideRect.width;
+    const gap = parseFloat(getComputedStyle(track).gap || '0');
 
-    console.log(`offset: ${offset}, totalGap: ${totalGap}`);
-    
-    this.slideTransform = `translateX(calc(${offset}% - ${totalGap}vw))`;
+    const offset = this.activeSlide * (slideWidth + gap) * visibleCards;
+    this.slideTransform = `translateX(-${offset}px)`;
   }
-
-
 
 
   @withSideEffect('updateSlideTransform')
