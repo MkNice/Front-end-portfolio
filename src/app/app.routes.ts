@@ -3,7 +3,12 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 
 export const routes: Routes = [
     {
-        path: 'portfolio'   ,
+        path: 'portfolio',
         component: PortfolioComponent,
+    },
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'portfolio',
     }
 ];

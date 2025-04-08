@@ -14,7 +14,7 @@
         <div class="carousel-viewport">
           <div class="carousel-track" [style.transform]="slideTransform">
             @for (project of projects; track project.title) {
-            <div class="carousel-slide">
+            <div class="carousel-slide" #slideRef>
               <div class="card">
                 <div class="preview-image">
                   <img [src]="project.image" alt="Preview" />

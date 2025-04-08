@@ -9,7 +9,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    overflow: hidden;
     gap: 0.5rem;
 
     .carousel-viewport {
@@ -25,10 +24,19 @@
     }
 
     .carousel-slide {
-      flex: 0 0 49%;
-      max-width: 49%;
+      flex: 0 0 100%;
+    }
+    @media (min-width: 768px) {
+      .carousel-slide {
+        flex: 0 0 49%;
+      }
     }
 
+    @media (min-width: 1441px) {
+      .carousel-slide {
+        flex: 0 0 32%;
+      }
+    }
     .arrow {
       background: rgba(255, 255, 255, 0.1);
       border: none;
@@ -41,6 +49,8 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 1);
       }
 
       &:first-of-type {
@@ -56,20 +66,22 @@
   .carousel-indicator {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
     margin-top: 1rem;
+    gap: 0.5rem;
+  }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #777;
-      border: none;
-      cursor: pointer;
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #444;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 
-      &.active {
-        background-color: #fff;
-      }
+    &.active {
+      background: #8888ff;
+      transform: scale(1.2);
+      box-shadow: 0 0 5px #8888ff;
     }
   }
 }
@@ -121,10 +133,15 @@
     color: $text-color;
     font-size: 2rem;
     margin: 0 auto 4rem auto;
-    width: 40vw;
+    width: 60vw;
     line-height: 1.6;
   }
-
+  @media screen and (max-width: 768px) {
+    .description {
+      font-size: 1.5rem;
+      width: 100%;
+    }
+  }
   .project-blocks {
     position: relative;
     display: grid;

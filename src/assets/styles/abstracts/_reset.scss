@@ -64,13 +64,13 @@ body {
   padding: 0;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 360px) {
   html {
     font-size: 35%; /* 1rem = 5.6px (относительно стандартных 16px) */
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 360px) and (max-width: 480px) {
   html {
     font-size: 45%; /* 1rem = 7.2px */
   }

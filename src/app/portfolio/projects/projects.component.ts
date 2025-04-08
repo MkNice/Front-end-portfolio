@@ -1,9 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { withSideEffect } from '../../helpers/withSideEffect';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -59,30 +60,91 @@ export class ProjectsComponent implements OnInit {
       image: "./assets/images/projectsPreview/project-for-example.png",
     },
   ];
-  public dots = Array.from({ length: Math.floor(this.projects.length / 2) }, (_, i) => i);
 
   public slideTransform: string = '';
 
-  public ngOnInit(): void {
-    this.updateSlideTransform();
+  public dots: number[] = [];
+  private platformId = inject(PLATFORM_ID);
+
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  private mediaQueryLists: MediaQueryList[] = [];
+  private mediaQueryListeners: Array<() => void> = [];
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.setupMediaListeners();
+      this.updateDots();
+      this.updateSlideTransform();
+    }
   }
 
+  ngOnDestroy(): void {
+    this.mediaQueryListeners.forEach(dispose => dispose());
+  }
+
+  private setupMediaListeners(): void {
+    const queries = [
+      '(max-width: 767px)',
+      '(min-width: 768px) and (max-width: 1440px)',
+      '(min-width: 1441px)'
+    ];
+
+    queries.forEach(query => {
+      const mql = window.matchMedia(query);
+      const listener = () => {
+        this.updateDots();
+        this.updateSlideTransform();
+        this.cdr.detectChanges();
+      };
+      mql.addEventListener('change', listener);
+      this.mediaQueryLists.push(mql);
+      this.mediaQueryListeners.push(() => mql.removeEventListener('change', listener));
+    });
+  }
+
+  private updateDots(): void {
+    const visibleCards = this.getVisibleCardsCount();
+    const dotCount = Math.ceil(this.projects.length / visibleCards);
+    this.dots = Array.from({ length: dotCount }, (_, idx) => idx);
+  }
+
+  private getVisibleCardsCount(): number {
+    const width = window.innerWidth;
+    if (width >= 1441) return 3;
+    if (width >= 768) return 2;
+    return 1;
+  }
   private updateSlideTransform(): void {
-    const offset = this.activeSlide * -101.7;
-    this.slideTransform = `translateX(${offset}%)`;
+    const offset = this.activeSlide * - 100;
+    const totalGap = (this.activeSlide) * 1.3;
+
+    if (this.activeSlide === 0) {
+      this.slideTransform = 'translateX(0)';
+      return;
+    }
+
+
+    console.log(`offset: ${offset}, totalGap: ${totalGap}`);
+    
+    this.slideTransform = `translateX(calc(${offset}% - ${totalGap}vw))`;
   }
 
+
+
+
+  @withSideEffect('updateSlideTransform')
   public goToSlide(index: number): void {
     this.activeSlide = index;
   }
 
+  @withSideEffect('updateSlideTransform')
   public changeSlide(direction: 'next' | 'prev'): void {
-    const halfLength = Math.floor(this.projects.length / 2) - 1;
+    const maxIndex = this.dots.length - 1;
     if (direction === 'next') {
-      this.activeSlide = this.activeSlide < halfLength ? this.activeSlide + 1 : 0;
+      this.activeSlide = this.activeSlide < maxIndex ? this.activeSlide + 1 : 0;
       return;
     }
-    this.activeSlide = this.activeSlide > 0 ? this.activeSlide - 1 : halfLength;
+    this.activeSlide = this.activeSlide > 0 ? this.activeSlide - 1 : maxIndex;
   }
-
 }
