@@ -1,0 +1,23 @@
+<section class="projects">
+  <div class="wrapper">
+    <h2>Projects</h2>
+    <p class="description">
+      Take a look at some of my featured projects. Each preview gives a quick
+      glance at what I’ve built — click on any project to explore it in more
+      detail and see it in action.
+    </p>
+
+    <app-carousel [items]="projects" [itemTemplate]="projectTemplate">
+      <ng-template #projectTemplate let-project>
+        <div class="card">
+          <div class="preview-image">
+            <img [src]="project.image" alt="Preview" />
+          </div>
+          <h2>{{ project.title }}</h2>
+          <p>{{ project.description }}</p>
+          <button>Go started</button>
+        </div>
+      </ng-template>
+    </app-carousel>
+  </div>
+</section>

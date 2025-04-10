@@ -1,0 +1,70 @@
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
+
+.tech-stack {
+  padding: 8rem 0rem;
+  background: $primary-bg;
+  color: $text-color;
+  text-align: center;
+  position: relative;
+  @include corner-glow-only-bottom();
+  h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .description {
+    color: $text-color;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .card {
+    height: 100%;
+    background: $secondary-bg;
+    padding: 2.4rem;
+    border-radius: 1.2rem;
+    opacity: 0;
+    transform: translateY(3rem) scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    &.reveal {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    &:hover {
+      background: $secondary-bg;
+      transform: translateY(-0.5rem);
+    }
+
+    img {
+      display: block;
+      margin: 0 auto 2rem auto;
+      height: 5rem;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      color: $text-color;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@use "abstracts/variables" as *;
+
+.intro {
+  .content {
+    h1 {
+      font-size: 6rem;
+      font-weight: bold;
+      color: $text-color;
+      margin-bottom: 1rem;
+      text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.8);
+    }
+
+    h2 {
+      font-size: 4.5rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: $text-color;
+    }
+    .role {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      color: $text-color;
+    }
+
+    .description {
+      font-size: 2.4rem;
+      line-height: 1.6;
+      color: $text-color;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 1rem 2rem;
+      background: $border-color;
+      color: $primary-bg;
+      font-size: 2.4rem;
+      font-weight: 500;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      transition: background $transition-time ease,
+        transform $transition-time ease;
+
+      &:hover {
+        background: $hover-color;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
