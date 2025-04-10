@@ -1,7 +1,13 @@
+
 <div class="container">
   <button class="arrow" (click)="changeSlide('prev')">←</button>
   <div class="viewport">
-    <div class="track" [style.transform]="slideTransform">
+    <div
+      class="track"
+      appCarouselTrack
+      [activeSlide]="activeSlide"
+      (gapChange)="trackGap = $event"
+    >
       @for(item of items; track item) {
       <div class="slide">
         <ng-container
@@ -23,3 +29,10 @@
   ></button>
   }
 </div>
+
+<div
+  appMediaQuerryListener
+  (mediaChange)="onResizeOrMediaChange()"
+  appResizeListener
+  (resized)="onResizeOrMediaChange()"
+></div>

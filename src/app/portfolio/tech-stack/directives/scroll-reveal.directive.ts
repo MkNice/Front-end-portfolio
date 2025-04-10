@@ -3,21 +3,24 @@ import {
   ElementRef,
   Renderer2,
   AfterViewInit,
+  inject,
 } from '@angular/core';
+import { IS_BROWSER } from '../../../shared/platform.tokens';
 
 @Directive({
   selector: '[appScrollReveal]',
 })
 export class ScrollRevealDirective implements AfterViewInit {
+  private readonly isBrowser = inject(IS_BROWSER)
+
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
   ) { }
 
   ngAfterViewInit(): void {
-    if (!(typeof window !== 'undefined' && 'IntersectionObserver' in window)) {
-      return;
-    }
+    if (!this.isBrowser) return;
+
     const observer = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach(entry => {
