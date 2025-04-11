@@ -1,18 +1,14 @@
-<section class="tech-stack">
-  <div class="wrapper">
-    <h2>My Tech Stack</h2>
-    <p class="description">
-      The core technologies I use to build scalable and high-performance web
-      applications.
-    </p>
-    <div class="grid">
-      @for (skill of techStack; track $index) {
-      <div class="card" appScrollReveal>
-        <img [src]="path + skill.icon" [alt]="skill.title" />
-        <h3>{{ skill.title }}</h3>
-        <p>{{ skill.desc }}</p>
-      </div>
-      }
+<app-section
+  [title]="techStackSection.title"
+  [description]="techStackSection.description"
+>
+  <div class="grid">
+    @for (skill of techStackSection.items; track $index) {
+    <div class="card" appScrollReveal>
+      <img [src]="path + skill.icon" [alt]="skill.title" />
+      <h3>{{ skill.title }}</h3>
+      <p>{{ skill.description }}</p>
     </div>
+    }
   </div>
-</section>
+</app-section>

@@ -2,13 +2,10 @@
 @use "abstracts/mixins" as *;
 
 :host {
-  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
-
   .container {
-    position: relative;
     @include flex-center(space-between);
     gap: 0.5rem;
 

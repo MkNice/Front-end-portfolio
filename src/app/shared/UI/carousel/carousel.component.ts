@@ -11,8 +11,8 @@ import { NgTemplateOutlet } from '@angular/common';
 import { ResizeListenerDirective } from './directives/resize-listener.directive';
 import { MediaQuerryListenerDirective } from './directives/media-querry-listener.directive';
 import { CarouselTrackDirective } from './directives/carousel-track.directive';
-import { CarouselItem } from './interfaces/carousel';
 import { NativeWindowService } from '../../services/native-window.service';
+import { ISectionItem } from '../../interfaces/section';
 
 @Component({
   selector: 'app-carousel',
@@ -28,7 +28,7 @@ import { NativeWindowService } from '../../services/native-window.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CarouselComponent {
-  @Input() public items: CarouselItem[] = [];
+  @Input() public items: ISectionItem[] = [];
   @Input() public itemTemplate!: TemplateRef<unknown>;
   private readonly nativeWindow = inject(NativeWindowService)
 

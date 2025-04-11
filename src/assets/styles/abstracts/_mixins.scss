@@ -38,7 +38,7 @@
     position: absolute;
     width: $size;
     height: $size;
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
   }
 
@@ -75,7 +75,7 @@
       $color,
       transparent $spread
     );
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
   }
 }
