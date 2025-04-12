@@ -1,9 +1,12 @@
 @use "abstracts/variables" as *;
 @use "abstracts/mixins" as *;
-
+.wrapper{
+  max-width: 80vw;
+}
 :host {
   position: relative;
   @include corner-glow();
+ 
   .card {
     background: #0f0f11;
     color: #f1f5f9;

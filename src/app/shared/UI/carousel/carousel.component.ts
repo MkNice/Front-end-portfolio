@@ -35,7 +35,7 @@ export class CarouselComponent {
   public activeSlide = 0;
   public trackGap = 0;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  public constructor(private cdr: ChangeDetectorRef) { }
 
   public onResizeOrMediaChange(): void {
     this.activeSlide = 0;
