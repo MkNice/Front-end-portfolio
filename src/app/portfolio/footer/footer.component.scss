@@ -1,15 +1,47 @@
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+
 :host {
   footer {
-    background-color: #0d0d14;
-    color: #fff;
+    position: relative;
     padding: 4rem 0;
-    font-family: "Inter", sans-serif;
+    background: linear-gradient(
+      to bottom,
+      $primary-bg 0%,
+      #0f0f1b 50%,
+      #0a0a15 100%
+    );
+    background-blend-mode: overlay;
+    color: $text-color;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        150% 100% at 90% 90%,
+        rgba(128, 0, 255, 0.2),
+        transparent 70%
+      );
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+    }
 
     .top-section {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       padding-bottom: 3rem;
     }
 
@@ -17,8 +49,8 @@
       max-width: 300px;
 
       .logo {
-        font-weight: bold;
-        font-size: 1.2rem;
+        font-weight: 700;
+        font-size: 1.4rem;
         margin-bottom: 0.5rem;
       }
 
@@ -28,17 +60,28 @@
         opacity: 0.8;
       }
 
-      .social-links {
-        margin-top: 1rem;
+      .socials {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+
+        a:nth-child(2) {
+          filter: invert(1);
+        }
 
         a {
-          margin-right: 0.75rem;
-          font-size: 1.2rem;
-          opacity: 0.8;
-          transition: opacity 0.2s;
+          display: inline-block;
 
-          &:hover {
-            opacity: 1;
+          img {
+            height: 2rem;
+            width: 2rem;
+            display: block;
+            transition: 0.3s ease;
+            filter: brightness(0.9);
+          }
+
+          &:hover img {
+            filter: brightness(1.2) drop-shadow(0 0 8px #b47aff);
           }
         }
       }
@@ -76,13 +119,33 @@
       }
     }
 
-    .globe {
-      margin-top: 3rem;
+    .made {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.35);
       text-align: center;
 
-      img {
-        width: 300px;
-        opacity: 0.3;
+      span {
+        color: #ff4d6d;
+        font-weight: 500;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      .top-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .links {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .socials {
+        justify-content: center;
       }
     }
   }
