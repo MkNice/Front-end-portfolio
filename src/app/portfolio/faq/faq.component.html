@@ -1,0 +1,21 @@
+<app-section
+  title="Frequently Asked"
+  description="Here are answers to common questions about me, my work, and technologies I use."
+>
+  <div class="faq-list">
+    <div
+      class="faq-item"
+      *ngFor="let item of faqList; let i = index"
+      [class.active]="activeIndex === i"
+      (click)="toggleFAQ(i)"
+    >
+      <div class="faq-question">
+        {{ item.question }}
+        <span class="arrow" [class.rotate]="activeIndex === i">⌄</span>
+      </div>
+      <div class="faq-answer" *ngIf="activeIndex === i">
+        {{ item.answer }}
+      </div>
+    </div>
+  </div>
+</app-section>

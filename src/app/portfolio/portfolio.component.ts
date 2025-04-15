@@ -4,10 +4,11 @@ import { HeaderComponent } from "./header/header.component";
 import { TechStackComponent } from "./tech-stack/tech-stack.component";
 import { ProjectsComponent } from './projects/projects.component';
 import { FooterComponent } from "./footer/footer.component";
+import { FaqComponent } from "./faq/faq.component";
 
 @Component({
   selector: 'app-portfolio',
-  imports: [IntroComponent, HeaderComponent, TechStackComponent, ProjectsComponent, FooterComponent],
+  imports: [IntroComponent, HeaderComponent, TechStackComponent, ProjectsComponent, FooterComponent, FaqComponent],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
