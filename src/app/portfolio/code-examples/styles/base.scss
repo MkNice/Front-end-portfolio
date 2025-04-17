@@ -1,0 +1,80 @@
+@use "abstracts/variables" as *;
+
+.glow-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40vw;
+    height: 40vw;
+    z-index: 1;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    background: url("/assets/images/code-examples/circle.png") center / contain no-repeat;
+    animation: spin 30s linear infinite;
+  }
+
+  &::before {
+    background: conic-gradient(
+      from 270deg at 50% 80%,
+      #ff6b9c,
+      #002aff,
+      rgba(71, 40, 107, 0.6)
+    );
+    filter: blur(160px);
+  }
+
+  .code-frame {
+    background: #1e1e2f;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    max-width: 45vw;
+    z-index: 2;
+  }
+
+  .code-grid {
+    display: flex;
+    flex-direction: column;
+
+    .code,
+    .statusbar {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .code-actions {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .code-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $text-color;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
+    background-size: 200%;
+    transition: background-position 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+
+    &:hover {
+      background-position: right center;
+      transform: scale(1.05);
+    }
+  }
+}

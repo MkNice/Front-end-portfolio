@@ -9,12 +9,11 @@
         </label>
       </div>
       <ul class="nav-links">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Pages</a></li>
-        <li><a class="link" href="#">Projects</a></li>
-        <li><a class="link" href="#">Blog</a></li>
-        <li><a class="link" href="#">About</a></li>
-        <li><a class="link" href="#">Contact</a></li>
+        @for(link of links; track link){
+        <li>
+          <a class="link" href="#">{{ link | capitalize }} </a>
+        </li>
+        }
       </ul>
       <div class="overlay"></div>
     </nav>

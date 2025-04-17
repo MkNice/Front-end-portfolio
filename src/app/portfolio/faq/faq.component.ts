@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SectionComponent } from "../../shared/UI/section/section.component";
+import { IBaseSection } from '../../shared/interfaces/section';
+import { IFaqList } from './intrefaces/faqList';
+
 
 @Component({
   selector: 'app-faq',
@@ -10,7 +13,11 @@ import { SectionComponent } from "../../shared/UI/section/section.component";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FaqComponent {
-  public faqList = [
+  public readonly sectionData: IBaseSection = {
+    title: "Frequently Asked",
+    description: "Here are answers to common questions about me, my work, and technologies I use."
+  }
+  public readonly faqList: IFaqList[] = [
     {
       question: 'What technologies do you use?',
       answer: 'I primarily work with Angular, TypeScript, SCSS, and Node.js. I also enjoy experimenting with tools like Tailwind and Firebase.',

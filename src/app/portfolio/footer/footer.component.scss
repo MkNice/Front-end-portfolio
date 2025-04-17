@@ -1,5 +1,5 @@
-@use 'abstracts/variables' as *;
-@use 'abstracts/mixins' as *;
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
 
 :host {
   footer {
@@ -13,12 +13,12 @@
     );
     background-blend-mode: overlay;
     color: $text-color;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     overflow: hidden;
     z-index: 1;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: radial-gradient(
@@ -45,80 +45,6 @@
       padding-bottom: 3rem;
     }
 
-    .branding {
-      max-width: 300px;
-
-      .logo {
-        font-weight: 700;
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .tagline {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        opacity: 0.8;
-      }
-
-      .socials {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1.5rem;
-
-        a:nth-child(2) {
-          filter: invert(1);
-        }
-
-        a {
-          display: inline-block;
-
-          img {
-            height: 2rem;
-            width: 2rem;
-            display: block;
-            transition: 0.3s ease;
-            filter: brightness(0.9);
-          }
-
-          &:hover img {
-            filter: brightness(1.2) drop-shadow(0 0 8px #b47aff);
-          }
-        }
-      }
-    }
-
-    .links {
-      display: flex;
-      gap: 4rem;
-
-      .column {
-        h4 {
-          font-size: 1rem;
-          margin-bottom: 1rem;
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-
-          li {
-            margin-bottom: 0.5rem;
-
-            a {
-              color: inherit;
-              text-decoration: none;
-              opacity: 0.75;
-              transition: opacity 0.2s;
-
-              &:hover {
-                opacity: 1;
-              }
-            }
-          }
-        }
-      }
-    }
-
     .made {
       margin-top: 2.5rem;
       font-size: 0.85rem;
@@ -136,16 +62,6 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-      }
-
-      .links {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-      }
-
-      .socials {
-        justify-content: center;
       }
     }
   }
