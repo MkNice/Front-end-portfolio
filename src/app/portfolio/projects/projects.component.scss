@@ -1,12 +1,23 @@
 @use "abstracts/variables" as *;
 @use "abstracts/mixins" as *;
-.wrapper{
-  max-width: 80vw;
-}
+
 :host {
   position: relative;
-  @include corner-glow();
- 
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50rem;
+    height: 50rem;
+    background: radial-gradient(
+      circle at top left,
+      rgba(71, 40, 107, 0.6),
+      transparent 60%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
   .card {
     background: #0f0f11;
     color: #f1f5f9;

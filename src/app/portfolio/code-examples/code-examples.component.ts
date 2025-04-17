@@ -9,6 +9,6 @@ import { SectionComponent } from "../../shared/UI/section/section.component";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeExamplesComponent {
-  codePath = '/assets/images/code-examples/withSideEffect.png';
+  codePath = '/assets/images/code-examples/withSideEffect2.png';
 
 }
