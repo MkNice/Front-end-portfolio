@@ -21,9 +21,9 @@ export class CarouselTrackDirective implements OnChanges {
 
   private readonly nativeWindow = inject(NativeWindowService);
 
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  public constructor(private el: ElementRef, private renderer: Renderer2) { }
 
-  ngOnChanges(_changes: SimpleChanges): void {
+  public ngOnChanges(_changes: SimpleChanges): void {
     this.gapChange.emit(this.gap);
     this.updateTransform();
   }

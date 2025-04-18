@@ -1,0 +1,48 @@
+@use "abstracts/variables" as *;
+
+:host {
+  max-width: 300px;
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    a:nth-child(2) {
+      filter: invert(1);
+    }
+
+    a {
+      display: inline-block;
+
+      img {
+        height: 2rem;
+        width: 2rem;
+        display: block;
+        transition: 0.3s ease;
+        filter: brightness(0.9);
+      }
+
+      &:hover img {
+        filter: brightness(1.2) drop-shadow(0 0 8px #b47aff);
+      }
+    }
+  }
+  @media (max-width: $mobile) {
+    .socials {
+      justify-content: center;
+    }
+  }
+}

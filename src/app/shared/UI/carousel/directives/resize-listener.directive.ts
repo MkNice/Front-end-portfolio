@@ -4,17 +4,17 @@ import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
   selector: '[appResizeListener]'
 })
 export class ResizeListenerDirective {
-  @Output() resized = new EventEmitter<void>();
+  @Output() public resized = new EventEmitter<void>();
   public idSetTimeout?: ReturnType<typeof setTimeout>;;
 
   @HostListener('window:resize')
-  onResize() {
+  public onResize() {
     clearTimeout(this.idSetTimeout);
     this.idSetTimeout = setTimeout(() => {
       this.resized.emit();
     }, 100)
   }
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.idSetTimeout && clearTimeout(this.idSetTimeout);
   }
 }

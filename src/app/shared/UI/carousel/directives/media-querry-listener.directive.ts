@@ -11,7 +11,7 @@ export class MediaQuerryListenerDirective implements OnInit, OnDestroy {
   private mediaQueryLists: MediaQueryList[] = [];
   private listeners: Array<() => void> = [];
 
-  ngOnInit() {
+  public ngOnInit() {
     const queries = [
       '(max-width: 767px)',
       '(min-width: 768px) and (max-width: 1440px)',
@@ -28,7 +28,7 @@ export class MediaQuerryListenerDirective implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     this.listeners.forEach(dispose => dispose());
   }
 }

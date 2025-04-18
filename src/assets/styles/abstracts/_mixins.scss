@@ -31,38 +31,11 @@
   }
 }
 
-@mixin corner-glow($color: rgba(71, 40, 107, 0.6), $size: 50rem, $spread: 60%) {
-  &::after,
-  &::before {
-    content: "";
-    position: absolute;
-    width: $size;
-    height: $size;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  &::after {
-    top: 0;
-    left: 0;
-    background: radial-gradient(
-      circle at top left,
-      $color,
-      transparent $spread
-    );
-  }
-
-  &::before {
-    bottom: 0;
-    right: 0;
-    background: radial-gradient(
-      circle at bottom right,
-      $color,
-      transparent $spread
-    );
-  }
-}
-@mixin corner-glow-only-bottom($color: rgba(71, 40, 107, 0.6), $size: 50rem, $spread: 60%) {
+@mixin corner-glow-only-bottom(
+  $color: rgba(71, 40, 107, 0.6),
+  $size: 50rem,
+  $spread: 60%
+) {
   &::before {
     content: "";
     position: absolute;
@@ -75,7 +48,7 @@
       $color,
       transparent $spread
     );
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
   }
 }

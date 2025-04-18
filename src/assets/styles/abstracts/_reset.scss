@@ -99,9 +99,13 @@ body {
     font-size: 65%; /* 1rem = 10.4px */
   }
 }
-
+@media (min-width: 1921px) and (max-width: 2560px) {
+  html {
+    font-size: 70%; /* 1rem = 10.4px */
+  }
+}
 @media (min-width: 2560px) {
   html {
-    font-size: 100%; /* 1rem = 16px (стандартное значение) */
+    font-size: 75%; /* 1rem = 16px (стандартное значение) */
   }
 }

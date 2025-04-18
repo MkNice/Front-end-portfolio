@@ -6,7 +6,7 @@ import { animate, keyframes, style, AnimationBuilder, AnimationFactory } from '@
 })
 export class GlowDirective implements OnInit {
   private animationFactory!: AnimationFactory;
-  private animationDelay: string = '5s';
+  private animationDelay: string = '4s';
   private animationDuration: string = '2000ms';
   private animation = [
     animate(
