@@ -1,14 +1,14 @@
 import { Directive, ElementRef, OnInit } from '@angular/core';
-import { animate, keyframes, style, AnimationBuilder, AnimationFactory } from '@angular/animations';
+import { animate, keyframes, style, AnimationBuilder, AnimationFactory, AnimationAnimateMetadata } from '@angular/animations';
 
 @Directive({
-  selector: '[appglow]'
+  selector: '[appGlow]'
 })
 export class GlowDirective implements OnInit {
   private animationFactory!: AnimationFactory;
   private animationDelay: string = '4s';
   private animationDuration: string = '2000ms';
-  private animation = [
+  private animation: AnimationAnimateMetadata[] = [
     animate(
       `${this.animationDelay} ${this.animationDuration} linear`,
       keyframes([

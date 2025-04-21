@@ -1,6 +1,6 @@
 <app-section
-  title="Code Examples"
-  description="This section shows real code I’ve written — following best practices, performance thinking, and modern design patterns."
+  [title]="sectionData.title"
+  [description]="sectionData.description"
 >
   <div class="glow-wrapper">
     <div class="code-frame">
@@ -12,10 +12,14 @@
       </div>
 
       <div class="code-grid">
-        <img class="code" [src]="codePath" alt="Code example" />
+        <img
+          class="code"
+          [src]="codePath + 'withSideEffect2.png'"
+          alt="Code example"
+        />
         <img
           class="statusbar"
-          src="/assets/images/code-examples/statusbar.png"
+          [src]="codePath + 'statusbar.png'"
           alt="Status bar"
         />
       </div>

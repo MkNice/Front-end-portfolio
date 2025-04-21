@@ -7,7 +7,6 @@ import {
   OnChanges,
   Output,
   Renderer2,
-  SimpleChanges,
 } from '@angular/core';
 import { NativeWindowService } from '../../../services/native-window.service';
 
@@ -15,21 +14,15 @@ import { NativeWindowService } from '../../../services/native-window.service';
   selector: '[appCarouselTrack]'
 })
 export class CarouselTrackDirective implements OnChanges {
-  @Input() activeSlide = 0;
-  @Input() triggerUpdate = 0;
-  @Output() gapChange = new EventEmitter<number>();
+  @Input() public activeSlide = 0;
+  @Input() public triggerUpdate = 0;
+  @Output() public gapChange = new EventEmitter<number>();
 
   private readonly nativeWindow = inject(NativeWindowService);
-
   public constructor(private el: ElementRef, private renderer: Renderer2) { }
 
-  public ngOnChanges(_changes: SimpleChanges): void {
-    this.gapChange.emit(this.gap);
-    this.updateTransform();
-  }
-
   private get visibleCards(): number {
-    const width = this.nativeWindow.innerWidth;
+    const width = this.nativeWindow.getInnerWidth();
     if (width >= 1441) return 3;
     if (width >= 768) return 2;
     return 1;
@@ -38,7 +31,12 @@ export class CarouselTrackDirective implements OnChanges {
   private get gap(): number {
     const track = this.el.nativeElement as HTMLElement;
     const style = this.nativeWindow.getComputedStyle(track);
-    return parseFloat(style?.gap || '0');
+    return parseFloat(style.gap || '0');
+  }
+
+  public ngOnChanges(): void {
+    this.gapChange.emit(this.gap);
+    this.updateTransform();
   }
 
   private updateTransform(): void {

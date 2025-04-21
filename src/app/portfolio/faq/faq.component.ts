@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SectionComponent } from "../../shared/UI/section/section.component";
 import { IBaseSection } from '../../shared/interfaces/section';
@@ -7,7 +6,7 @@ import { IFaqList } from './intrefaces/faqList';
 
 @Component({
   selector: 'app-faq',
-  imports: [CommonModule, SectionComponent],
+  imports: [SectionComponent],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -38,7 +37,7 @@ export class FaqComponent {
 
   public activeIndex: number | null = null;
 
-  public toggleFAQ(index: number) {
+  public toggleFAQ(index: number): void {
     this.activeIndex = this.activeIndex === index ? null : index;
   }
 }

@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   inject,
 } from '@angular/core';
-import { IS_BROWSER } from '../../../shared/platform.tokens';
+import { IS_BROWSER } from '../../../shared/tokens/platform.tokens';
 
 @Directive({
   selector: '[appScrollReveal]',
@@ -13,12 +13,12 @@ import { IS_BROWSER } from '../../../shared/platform.tokens';
 export class ScrollRevealDirective implements AfterViewInit {
   private readonly isBrowser = inject(IS_BROWSER)
 
-  constructor(
+  public constructor(
     private el: ElementRef,
     private renderer: Renderer2,
   ) { }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     if (!this.isBrowser) return;
 
     const observer = new IntersectionObserver(

@@ -9,6 +9,4 @@ import { FooterLinksComponent } from "./footer-links/footer-links.component";
   styleUrl: './footer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FooterComponent {
-
-}
+export class FooterComponent { }

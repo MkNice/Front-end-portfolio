@@ -1,20 +1,22 @@
-import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Output, OnDestroy } from '@angular/core';
 
 @Directive({
   selector: '[appResizeListener]'
 })
-export class ResizeListenerDirective {
+export class ResizeListenerDirective implements OnDestroy {
   @Output() public resized = new EventEmitter<void>();
   public idSetTimeout?: ReturnType<typeof setTimeout>;;
 
   @HostListener('window:resize')
-  public onResize() {
+  public onResize(): void {
     clearTimeout(this.idSetTimeout);
     this.idSetTimeout = setTimeout(() => {
       this.resized.emit();
-    }, 100)
+    }, 1000 )
   }
   public ngOnDestroy(): void {
-    this.idSetTimeout && clearTimeout(this.idSetTimeout);
+    if (this.idSetTimeout) {
+      clearTimeout(this.idSetTimeout);
+    }
   }
 }
