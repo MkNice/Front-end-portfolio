@@ -8,6 +8,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionComponent {
-  @Input() title: string = 'default title';
-  @Input() description: string = 'default description';
+  @Input() public title: string = 'default title';
+  @Input() public description: string = 'default description';
 }

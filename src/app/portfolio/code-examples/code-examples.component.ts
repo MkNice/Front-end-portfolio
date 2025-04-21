@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SectionComponent } from "../../shared/UI/section/section.component";
+import { IBaseSection } from '../../shared/interfaces/section';
 
 @Component({
   selector: 'app-code-examples',
@@ -9,6 +10,9 @@ import { SectionComponent } from "../../shared/UI/section/section.component";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeExamplesComponent {
-  codePath = '/assets/images/code-examples/withSideEffect2.png';
-
+  public readonly sectionData: IBaseSection = {
+    title: "Code Examples",
+    description: "This section shows real code I’ve written — following best practices, performance thinking, and modern design patterns."
+  }
+  public readonly codePath = '/assets/images/code-examples/';
 }

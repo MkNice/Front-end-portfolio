@@ -9,5 +9,5 @@ import { CapitalizePipe } from '../../shared/pipes/capitalize.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  public readonly links: Readonly<string[]> = ['home', 'pages', 'projects', 'blog', 'about', 'contact'];
+  public readonly links: readonly string[] = ['home', 'pages', 'projects', 'blog', 'about', 'contact'];
 }

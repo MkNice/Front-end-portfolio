@@ -3,19 +3,24 @@
   [description]="sectionData.description"
 >
   <div class="faq-list">
+    @for(item of faqList; track $index){
     <div
       class="faq-item"
-      *ngFor="let item of faqList; let i = index"
-      [class.active]="activeIndex === i"
-      (click)="toggleFAQ(i)"
+      [class.active]="activeIndex === $index"
+      (click)="toggleFAQ($index)"
+      (keydown.enter)="toggleFAQ($index)"
+      tabindex="0"
     >
       <div class="faq-question">
         {{ item.question }}
-        <span class="arrow" [class.rotate]="activeIndex === i">⌄</span>
+        <span class="arrow" [class.rotate]="activeIndex === $index">⌄</span>
       </div>
-      <div class="faq-answer" *ngIf="activeIndex === i">
+      @if(activeIndex === $index){
+      <div class="faq-answer">
         {{ item.answer }}
       </div>
+      }
     </div>
+    }
   </div>
 </app-section>
